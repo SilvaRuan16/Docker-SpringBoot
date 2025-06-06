@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.*;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import spring.avaliacao.spring.model.UserModel;
 
@@ -54,6 +56,9 @@ public class UserController {
 
     @PostMapping
     public UserModel createUser(@RequestBody UserModel user) {
+        BCryptPasswordEncoder hash = new BCryptPasswordEncoder();
+        String password = hash.encode(user.getPassword());
+        user.setPassword(password);
         users.add(user);
         saveUsers();
         return user;
