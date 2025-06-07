@@ -33,3 +33,8 @@ docker build -t spring-java .
 ```bash
 docker run -p 8080:8080 spring-java
 ```
+
+### 4. Abra o Navegador e cole na barra de pesquisa a seguinte url
+```bash
+http://localhost:8080/swagger-ui/index.html
+```
